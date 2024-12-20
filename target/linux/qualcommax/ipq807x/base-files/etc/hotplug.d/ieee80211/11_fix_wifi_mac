@@ -15,6 +15,10 @@ case "$board" in
 		[ "$PHYNBR" = "0" ] && macaddr_add $wan_mac 2 > /sys${DEVPATH}/macaddress
 		[ "$PHYNBR" = "1" ] && macaddr_add $wan_mac 3 > /sys${DEVPATH}/macaddress
 		;;
+        verizon,cr1000a)
+                label_mac=$(mmc_get_mac_ascii "0:APPSBLENV" baseMAC)
+                macaddr_add $label_mac $(($PHYNBR + 2)) > /sys${DEVPATH}/macaddress
+	        ;;
 	arcadyan,aw1000)
 		[ "$PHYNBR" = "0" ] && macaddr_add $(get_mac_label) 1 > /sys${DEVPATH}/macaddress
 		[ "$PHYNBR" = "1" ] && macaddr_add $(get_mac_label) 2 > /sys${DEVPATH}/macaddress
