@@ -14,7 +14,7 @@ Signed-off-by: Mantas Pucka <mantas@8devices.com>
 
 --- a/arch/arm64/boot/dts/qcom/ipq6018.dtsi
 +++ b/arch/arm64/boot/dts/qcom/ipq6018.dtsi
-@@ -107,56 +107,56 @@
+@@ -107,56 +107,61 @@
  
  		opp-864000000 {
  			opp-hz = /bits/ 64 <864000000>;
@@ -31,14 +31,13 @@ Signed-off-by: Mantas Pucka <mantas@8devices.com>
  			opp-supported-hw = <0xf>;
  			clock-latency-ns = <200000>;
  		};
- 
- 		opp-1200000000 {
- 			opp-hz = /bits/ 64 <1200000000>;
--			opp-microvolt = <850000>;
++
++		opp-1200000000 {
++			opp-hz = /bits/ 64 <1200000000>;
 +			opp-microvolt = <3>;
- 			opp-supported-hw = <0xf>;
- 			clock-latency-ns = <200000>;
- 		};
++			opp-supported-hw = <0xf>;
++			clock-latency-ns = <200000>;
++		};
  
  		opp-1320000000 {
  			opp-hz = /bits/ 64 <1320000000>;
@@ -55,14 +54,13 @@ Signed-off-by: Mantas Pucka <mantas@8devices.com>
  			opp-supported-hw = <0xf>;
  			clock-latency-ns = <200000>;
  		};
- 
- 		opp-1512000000 {
- 			opp-hz = /bits/ 64 <1512000000>;
--			opp-microvolt = <937500>;
++
++		opp-1512000000 {
++			opp-hz = /bits/ 64 <1512000000>;
 +			opp-microvolt = <6>;
- 			opp-supported-hw = <0xf>;
- 			clock-latency-ns = <200000>;
- 		};
++			opp-supported-hw = <0xf>;
++			clock-latency-ns = <200000>;
++		};
  
  		opp-1608000000 {
  			opp-hz = /bits/ 64 <1608000000>;
