@@ -65,6 +65,9 @@ ipq807x_setup_interfaces()
 	qnap,301w)
 		ucidef_set_interfaces_lan_wan "lan1 lan2 lan3 lan4 10g-2" "10g-1"
 		;;
+        verizon,cr1000a)
+    	        ucidef_set_interfaces_lan_wan "lan" "wan"
+   		;;
 	zyxel,nbg7815)
 		ucidef_set_interfaces_lan_wan "lan1 lan2 lan3 lan4 10g" "wan"
 		;;
@@ -86,6 +89,11 @@ ipq807x_setup_macs()
 			wan_mac=$(cat /dev/mtd12 | head -n 4 | grep "product.mac" | awk -F " " '{print $2}')
 			lan_mac=$(macaddr_add $wan_mac 1)
 		;;
+                verizon,cr1000a)
+    	                wan_mac=$(mmc_get_mac_ascii "0:APPSBLENV" baseMAC)
+                        lan_mac=$(macaddr_add "$wan_mac" 1)
+                        label_mac=wan_mac
+                ;;
 		linksys,mx4200v2|\
 		linksys,mx4300)
 			label_mac=$(mtd_get_mac_ascii devinfo hw_mac_addr)
