@@ -100,6 +100,19 @@ define Device/cmcc_rm2-6
 endef
 TARGET_DEVICES += cmcc_rm2-6
 
+define Device/verizon_cr1000a
+	$(call Device/FitImage)
+	$(call Device/UbiFit)
+	DEVICE_VENDOR := Verizon
+	DEVICE_MODEL := CR1000A
+	BLOCKSIZE := 128k
+	PAGESIZE := 2048
+	DEVICE_DTS_CONFIG := config@verizon_cr1000a
+	SOC := ipq8072
+	DEVICE_PACKAGES := ipq-wifi-verizon_cr1000a kmod-ath11k-pci ath11k-firmware-qcn9074 kmod-phy-aquantia kmod-phy-realtek
+endef
+TARGET_DEVICES += verizon_cr1000a
+
 define Device/compex_wpq873
 	$(call Device/FitImage)
 	$(call Device/UbiFit)
