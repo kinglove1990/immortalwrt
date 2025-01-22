@@ -237,3 +237,19 @@
 &sdhc_1 {
 	status = "okay";
 };
+
+&blsp1_uart5 {
+	status = "okay";
+};
+
+&prng {
+	status = "okay";
+};
+
+&cryptobam {
+	status = "okay";
+};
+
+&crypto {
+	status = "okay";
+};
