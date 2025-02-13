@@ -148,37 +148,65 @@
 	pinctrl-names = "default";
 	reset-gpios = <&tlmm 37 GPIO_ACTIVE_LOW>;
 
-	rtl9301: ethernet-phy@4 {
-		// compatible = "ethernet-phy-idaaaa.bbbb";
-		reg = <0x04>;
+	rtl9303: ethernet-phy-package@f {
+		#address-cells = <1>;
+		#size-cells = <0>;
+		reg = <0xf>;
+
+		rtl9303_8: ethernet-phy@0 {
+			compatible = "ethernet-phy-ieee802.3-c45";
+			reg = <0x0>;
+		};
+
+		rtl9303_20: ethernet-phy@7 {
+			compatible = "ethernet-phy-ieee802.3-c22";
+			reg = <0x7>;
+		};
+
+		rtl9303_24: ethernet-phy@3 {
+			compatible = "ethernet-phy-ieee802.3-c22";
+			reg = <0x3>;
+		};
+
 	};
 
 	aqr113c: ethernet-phy@8 {
 		compatible = "ethernet-phy-ieee802.3-c45";
-		reg = <0x08>;
+		reg = <0x8>;
 		// reset-gpios = <&tlmm 63 GPIO_ACTIVE_LOW>;
 	};
 
-	mxl3711: ethernet-phy@f {
-		//compatible = "ethernet-phy-ieee802.3-c45";
-		reg = <0x0f>;
-		// reset-gpios = <&tlmm 63 GPIO_ACTIVE_LOW>;
-	};
 };
 
 &switch {
 	status = "okay";
 
-	switch_lan_bmp = <(ESS_PORT3 | ESS_PORT4 | ESS_PORT5)>;
+	switch_lan_bmp = <(ESS_PORT2 | ESS_PORT3 | ESS_PORT4 | ESS_PORT5)>;
 	switch_wan_bmp = <ESS_PORT6>;
 	switch_mac_mode = <MAC_MODE_PSGMII>;
 	switch_mac_mode1 = <MAC_MODE_10GBASE_R>;
 	switch_mac_mode2 = <MAC_MODE_USXGMII>;
 
 	qcom,port_phyinfo {
-		port@5 {
-			port_id = <5>;
+		
+		port@2 {
+			port_id = <2>;
 			phy_address = <0x0>;
+		};
+
+		port@3 {
+			port_id = <3>;
+			phy_address = <0x7>;
+		};
+
+		port@4 {
+			port_id = <4>;
+			phy_address = <0x3>;
+		};
+
+                port@5 {
+			port_id = <5>;
+			phy_address = <0xf>;
 		};
 
 		port@6 {
@@ -196,7 +224,7 @@
 
 &dp5_syn {
 	status = "okay";
-	phy-handle = <&rtl9301>;
+	phy-handle = <&rtl9303>;
 	label = "lan";
 };
 
