@@ -148,11 +148,6 @@
 	pinctrl-names = "default";
 	reset-gpios = <&tlmm 37 GPIO_ACTIVE_LOW>;
 
-	rtl9303: ethernet-phy-package@f {
-		#address-cells = <1>;
-		#size-cells = <0>;
-		reg = <0xf>;
-
 		rtl9303_8: ethernet-phy@0 {
 			compatible = "ethernet-phy-ieee802.3-c45";
 			reg = <0x0>;
@@ -168,6 +163,37 @@
 			reg = <0x3>;
 		};
 
+	rtl9303: switch@f {
+		#address-cells = <1>;
+		#size-cells = <0>;
+		reg = <0xf>;
+
+		ports {
+			port@27 {
+				reg = <27>;
+				label = "cpu";
+				ethernet = <&dp5_syn>;
+				phy-handle = <&rtl9303>;
+			};
+
+			port@1 {
+				reg = <0>;
+				label = "lan1";
+				phy-handle = <&rtl9303_8>;
+			};
+
+			port@2 {
+				reg = <7>;
+				label = "lan2";
+				phy-handle = <&rtl9303_20>;
+			};
+
+			port@3 {
+				reg = <3>;
+				label = "lan3";
+				phy-handle = <&rtl9303_24>;
+			};
+		};
 	};
 
 	aqr113c: ethernet-phy@8 {
@@ -189,21 +215,6 @@
 
 	qcom,port_phyinfo {
 		
-		port@2 {
-			port_id = <2>;
-			phy_address = <0x0>;
-		};
-
-		port@3 {
-			port_id = <3>;
-			phy_address = <0x7>;
-		};
-
-		port@4 {
-			port_id = <4>;
-			phy_address = <0x3>;
-		};
-
                 port@5 {
 			port_id = <5>;
 			phy_address = <0xf>;
@@ -224,12 +235,14 @@
 
 &dp5_syn {
 	status = "okay";
+        phy-mode = "usxgmii";
 	phy-handle = <&rtl9303>;
-	label = "lan";
+	label = "switch";
 };
 
 &dp6_syn {
 	status = "okay";
+        phy-mode = "usxgmii";
 	phy-handle = <&aqr113c>;
 	label = "wan";
 };
