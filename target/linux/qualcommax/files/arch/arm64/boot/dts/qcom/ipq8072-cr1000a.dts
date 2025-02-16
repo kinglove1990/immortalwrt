@@ -22,7 +22,7 @@
 
 		ethernet4 = &dp5;
 		ethernet5 = &dp6;
-		label-mac-device = &dp5_syn;
+		label-mac-device = &dp6_syn;
 	};
 
 	chosen {
