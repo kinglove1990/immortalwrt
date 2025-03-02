@@ -159,6 +159,45 @@
 		reg = <0x0f>;
 		// reset-gpios = <&tlmm 63 GPIO_ACTIVE_LOW>;
 	};
+
+        switch: switch@30 {
+                compatible = "realtek,rtl9303";
+                reg = <0x30>;
+        
+        ports {
+            #address-cells = <1>;
+            #size-cells = <0>;
+
+            cpu_port: port@27 {
+                reg = <27>;
+                label = "cpu";
+                ethernet = <&dp5_syn>;
+                phy-mode = "usxgmii";
+                fixed-link {
+                    speed = <10000>;
+                    full-duplex;
+                };
+            };
+            
+            port@8 {
+                reg = <8>;
+                label = "lan1";
+                phy_address = <0>;
+            };
+
+            port@20 {
+                reg = <20>;
+                label = "lan2";
+                phy_address = <7>;
+            };
+            
+            port@24 {
+                reg = <24>;
+                label = "lan3";
+                phy_address = <3>;
+            };
+        };
+    };
 };
 
 &switch {
@@ -192,7 +231,7 @@
 &dp5_syn {
 	status = "okay";
 	phy-handle = <&rtl9303>;
-	label = "lan";
+	label = "switch";
 };
 
 &dp6_syn {
