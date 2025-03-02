@@ -161,7 +161,7 @@
 	};
 
         switch: switch@30 {
-                compatible = "realtek,rtl9303";
+                compatible = "realtek,rtl838x-mdio";
                 reg = <0x30>;
         
         ports {
