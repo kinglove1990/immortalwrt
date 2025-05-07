@@ -15,7 +15,6 @@ ipq807x_setup_interfaces()
 	cmcc,rm2-6|\
 	edgecore,eap102|\
 	tplink,deco-x80-5g|\
-	verizon,cr1000a|\
 	yuncore,ax880|\
 	zte,mf269|\
 	zte,mf269-stock)
@@ -68,6 +67,9 @@ ipq807x_setup_interfaces()
 		;;
 	zyxel,nbg7815)
 		ucidef_set_interfaces_lan_wan "lan1 lan2 lan3 lan4 10g" "wan"
+		;;
+	verizon,cr1000a)
+		ucidef_set_interfaces_lan_wan "lan1 lan2 lan3 lan4 lan" "wan"
 		;;
 	*)
 		echo "Unsupported hardware. Network interfaces not initialized"
