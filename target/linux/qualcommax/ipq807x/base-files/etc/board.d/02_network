@@ -69,7 +69,7 @@ ipq807x_setup_interfaces()
 		ucidef_set_interfaces_lan_wan "lan1 lan2 lan3 lan4 10g" "wan"
 		;;
 	verizon,cr1000a)
-		ucidef_set_interfaces_lan_wan "lan1 lan2 lan3 lan4 lan5" "wan"
+		ucidef_set_interfaces_lan_wan "switch" "wan"
 		;;
 	*)
 		echo "Unsupported hardware. Network interfaces not initialized"
