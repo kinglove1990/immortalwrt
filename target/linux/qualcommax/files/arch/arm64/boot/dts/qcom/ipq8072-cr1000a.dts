@@ -185,7 +185,7 @@
 	status = "okay";
         phy-mode = "usxgmii";
 	phy-handle = <&rtl9303>;
-	label = "switch";
+	label = "lan";
 };
 
 &dp6_syn {
