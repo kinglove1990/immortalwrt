@@ -572,6 +572,6 @@ define Device/verizon_cr1000a
 	PAGESIZE := 2048
 	SOC := ipq8072
 	DEVICE_DTS_CONFIG := config@verizon_cr1000a
-	DEVICE_PACKAGES := ipq-wifi-verizon_cr1000a ath11k-firmware-qcn9074 kmod-phy-realtek
+	DEVICE_PACKAGES := ipq-wifi-verizon_cr1000a ath11k-firmware-qcn9074 kmod-switch-rtl9303 kmod-usb3
 endef
 TARGET_DEVICES += verizon_cr1000a
