@@ -10,6 +10,17 @@ define Device/8devices_kiwi-dvk
 endef
 TARGET_DEVICES += 8devices_kiwi-dvk
 
+define Device/nokia_beacon10
+	$(call Device/FitImage)
+	$(call Device/EmmcImage)
+	DEVICE_VENDOR := Nokia
+	DEVICE_MODEL := Beacon10
+	DEVICE_DTS_CONFIG := config@nokia_beacon10
+	SOC := ipq9574
+	DEVICE_PACKAGES := kmod-ath12k ath12k-firmware-qcn9274 ipq-wifi-nokia_beacon10
+endef
+TARGET_DEVICES += nokia_beacon10
+
 define Device/qcom_rdp433
 	$(call Device/FitImageLzma)
 	DEVICE_VENDOR := Qualcomm Technologies, Inc.
